@@ -1,0 +1,73 @@
+\documentclass{beamer}
+\usepackage[spanish,activeacute]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{gray2}{rgb}{100,100,100}
+\definecolor{red}{rgb}{255,0,0}
+\usetheme[backgroundimagefile=img/linux]{diepen}
+
+\author{\large Cristián Maureira Fredes\\\normalsize saint@archlinux.cl}
+\title{\huge Bienvenidos a Linux}
+\subtitle{\Large \textit{``Let's share the wisdom!''}}
+\institute{Universidad Técnica\\ Federico Santa María}
+\date{\today}
+
+\begin{document}
+
+\include{src/0-cover}
+\section{Agenda}
+\frame
+{
+\frametitle{Agenda}
+\begin{columns}
+   \begin{column}{0.5\textwidth}
+	\begin{itemize}
+		\item Introducción
+		\item Aclaraciones
+		\item Historia
+		\item Características
+		\begin{itemize}
+			\item Entornos Graficos
+			\item Distribuciones
+			\item Metodología de Desarrollo
+		\end{itemize}
+	\end{itemize}
+	\end{column}
+
+	\begin{column}{0.5\textwidth}
+	\begin{itemize}
+		\item Ambientes
+		\begin{itemize}
+			\item Computador de Escritorio
+			\item Estación de Juegos
+			\item Servidor
+			\item Sistemas embebidos.
+		\end{itemize}
+		\item Comparaciones
+		\item Casos de Éxito
+		\item Conclusiones
+	\end{itemize}
+   \end{column}
+\end{columns}
+}
+
+\include{src/1-introduccion}
+\include{src/2-aclaraciones}
+\include{src/3-historia}
+\include{src/4-caracteristicas}
+\include{src/5-ambientes}
+\include{src/6-comparaciones}
+\include{src/7-exito}
+\include{src/8-conclusiones}
+
+\frame
+{
+\frametitle{}
+\begin{center}
+	\Huge{¿Preguntas?}
+\end{center}
+}
+
+\end{document}
