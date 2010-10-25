@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>494</width>
+    <height>321</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>openWall</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QPushButton" name="applyButton">
+    <property name="geometry">
+     <rect>
+      <x>360</x>
+      <y>180</y>
+      <width>121</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Apply</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="examineButton">
+    <property name="geometry">
+     <rect>
+      <x>370</x>
+      <y>30</y>
+      <width>71</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Examine</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="wallpaperPathLine">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>30</y>
+      <width>361</width>
+      <height>25</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="imageLabel">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>70</y>
+      <width>320</width>
+      <height>200</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="openBoxCheckBox">
+    <property name="geometry">
+     <rect>
+      <x>370</x>
+      <y>150</y>
+      <width>82</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>autostart</string>
+    </property>
+   </widget>
+   <widget class="Line" name="line">
+    <property name="geometry">
+     <rect>
+      <x>360</x>
+      <y>120</y>
+      <width>121</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="optionComboBox">
+    <property name="geometry">
+     <rect>
+      <x>360</x>
+      <y>80</y>
+      <width>121</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <item>
+     <property name="text">
+      <string>none</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Adjust</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Tiled</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Centered</string>
+     </property>
+    </item>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>494</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuBarHelp">
+    <property name="title">
+     <string>Help</string>
+    </property>
+    <addaction name="menuHelp"/>
+    <addaction name="menuAbout"/>
+   </widget>
+   <widget class="QMenu" name="menuBarFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <widget class="QMenu" name="menuMode">
+     <property name="title">
+      <string>Mode</string>
+     </property>
+     <addaction name="menuAdjust"/>
+     <addaction name="menuTiled"/>
+     <addaction name="menuCentered"/>
+    </widget>
+    <addaction name="menuExamine"/>
+    <addaction name="menuMode"/>
+    <addaction name="menuOpenBox"/>
+    <addaction name="menuApply"/>
+    <addaction name="separator"/>
+    <addaction name="menuQuit"/>
+   </widget>
+   <addaction name="menuBarFile"/>
+   <addaction name="menuBarHelp"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="menuHelp">
+   <property name="text">
+    <string>Help</string>
+   </property>
+  </action>
+  <action name="menuAbout">
+   <property name="text">
+    <string>About</string>
+   </property>
+  </action>
+  <action name="menuQuit">
+   <property name="text">
+    <string>Quit</string>
+   </property>
+  </action>
+  <action name="menuExamine">
+   <property name="text">
+    <string>Examine</string>
+   </property>
+  </action>
+  <action name="menuOpenBox">
+   <property name="text">
+    <string>OpenBox</string>
+   </property>
+  </action>
+  <action name="menuAdjust">
+   <property name="text">
+    <string>Adjust</string>
+   </property>
+  </action>
+  <action name="menuTiled">
+   <property name="text">
+    <string>Tiled</string>
+   </property>
+  </action>
+  <action name="menuCentered">
+   <property name="text">
+    <string>Centered</string>
+   </property>
+  </action>
+  <action name="menuApply">
+   <property name="text">
+    <string>Apply</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

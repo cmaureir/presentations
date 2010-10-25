@@ -1,0 +1,5 @@
+#!/bin/bash
+
+for i in $(find .|grep pyc$);do
+	rm -f $i
+done

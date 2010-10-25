@@ -1,0 +1,13 @@
+Author: Cristián D. Maureira Fredes
+-------
+
+Los ejemplos son compatibles con python 2.X
+
+
+Para generar los .py a partir de los .ui
+	$ pyuic4 file.ui > file.py
+
+Los archivos .ui pueden ser abiertos con designer
+	$ designer
+
+El script 'clean' elimina todos los archivos .pyc
