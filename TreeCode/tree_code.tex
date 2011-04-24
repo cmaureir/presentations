@@ -1,0 +1,47 @@
+%%% Esqueleto base de la presentacion
+%%% No agregar las paginas con un include
+%%% Lo que quieran aportar deben ser usuarios del TRAC
+
+\documentclass{beamer}
+\usepackage[spanish,activeacute]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{listings}
+\usepackage{color}
+\definecolor{gray2}{rgb}{100,100,100}
+\definecolor{red}{rgb}{255,0,0}
+\definecolor{green}{rgb}{0,1,0} 
+\definecolor{blue}{rgb}{0,0,1} 
+\newcommand{\blue}{\textcolor{blue}}
+\newcommand{\red}{\textcolor{red}}
+\newcommand{\green}{\textcolor{green}}
+
+
+
+\usetheme[pageofpages=of,% String used between the current page and the
+                         % total page count.
+          alternativetitlepage=true,% Use the fancy title page.
+          titlepagelogo=img/cti_hpc-500,% Logo for the first page.
+          watermark=img/cti_hpc-500-off,% Watermark used in every page.
+          watermarkheight=60px,% Height of the watermark.
+          watermarkheightmult=2,% The watermark image is 4 times bigger
+                                % than watermarkheight.
+          ]{Torino}
+
+\usecolortheme{nouvelle}
+\vspace{-0.5cm}
+\author{\large Cristián D. Maureira Fredes\\\normalsize \textcolor{gray}{cmaureir@hpc.cl}}
+\title{\Huge Algoritmos Tree-code}
+\subtitle{Aproximando el cálculo de la fuerza, en el problema de n-cuerpos.}
+\institute{Universidad Técnica\\ Federico Santa María}
+
+\begin{document}
+\begin{frame}[t,plain]
+\titlepage
+\end{frame}
+\include{src/introduccion}
+\include{src/metodo}
+\include{src/conclusiones}
+\begin{frame}[t,plain]
+\titlepage
+\end{frame}
+\end{document}

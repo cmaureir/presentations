@@ -1,0 +1,235 @@
+\frame
+{
+\frametitle{Barnes-Hut Tree Code}
+\framesubtitle{Idea}
+
+\begin{center}
+``Agrupar cuerpos ceranos y aproximarlos en un solo cuerpo''
+\end{center}
+
+\begin{itemize}
+	\item Si el grupo está muy lejos, se aproximan los efectos gravitacionales
+		 utilizando el centro de masa.
+	\item Centro de masa, promedio de las posiciones de un cuerpo en un grupo,
+		 ponderado por la masa.
+\end{itemize}
+}
+
+\frame
+{
+\frametitle{Barnes-Hut Tree Code}
+\framesubtitle{Idea}
+
+\blue{Centro de Masa}
+
+
+Formalmente si dos cuerpos con posiciones (x1,y1), (x2,y2) y masas m1, m2,
+la masa total del centro de masa (x,y) está dada por:
+
+\begin{eqnarray}
+	m &=& m_{1} + m_{2} \nonumber \\
+	x &=& (x_{1}\cdot m_{1} + x_{2}\cdot m_{2}) / m \nonumber \\
+	y &=& (y_{1}\cdot m_{1} + y_{2}\cdot m_{2}) / m \nonumber \\
+\end{eqnarray}
+
+}
+
+\frame
+{
+\frametitle{Barnes-Hut Tree Code}
+\framesubtitle{Idea}
+
+El algoritmo es un esquema inteligente para agrupar cuerpos
+suficientemente cerca.
+Recursivamente divide el conjunto de cuerpos en grupos
+guardandolos en un quad-tree.
+Un quad-tree es similar a un binary-tree, excepto que cada nodo
+tiene 4 hijos (algunos pueden estar vacios),.
+Cada nodo representa una region de dos espacios dimensiones.
+
+El nodo más alto representa todo el espacio,
+y sus cuatro hijos representan cuatro cuadrantes en el espacio,
+}
+
+\frame
+{
+\frametitle{Barnes-Hut Tree Code}
+\framesubtitle{Aproximación}
+
+Como se muestra en  diagram1, el espacio es recursivamente
+subdividido en cuadrantes
+hasta que cada subdivisión contenta 0 o 1 cuerpo,
+(algunas regiones no tienen cuerpos en todos los cuadrantes.
+
+}
+
+\frame
+{
+\frametitle{Barnes-Hut Tree Code}
+\framesubtitle{Aproximación}
+
+Cada nodo externo, representa un único cuerpo.
+Cada nodo interno representa el grupo de cuerpos debajo de ella,
+y guarda el centro de masa y el total de masa de todos los
+cuerpos hijos.
+
+Diagram2
+}
+
+
+\frame
+{
+\frametitle{Barnes-Hut Tree Code}
+\framesubtitle{Cálculo de la fuerza}
+
+Para calcular la fuerza de la red en un particular cuerpo,
+recorre los nodos del arbol, partiendo de la raíz.
+Si el centro de masa de un nodo interno es suficientemente lejos
+del cuerpo, aproxima los cuerpos contenidos
+en esa parte del arbol en un solo cuerpo cuya posiciń es
+el centro de masa del grupo y cuya masa es el total de la masa del
+grupo.
+El algoritmo es rápido ya que no necesita examinar individualmente
+cualquier cuerpo del grupo.
+
+Si el nodo interno no está lo suficientemente lejos del cuerpo,
+recursivamente hay que recorrer cada uno de los sub-árboles.
+Para determinar si un nodo es suficientemente lejos, calcula
+el cuociente s/d, donde s es el ancho de la región representada
+por el nodo interno, y d es la distancia entre
+el cuerpo y el centro de masa del nodo.
+Despues, compara ese ratio con un valor umbral \theta.
+If s/d < \theta, entonces el nodo interno esta lo suficiente lejos.
+Ajustando el parametro \theta, podemos cambiar la velocidad
+y la presición de la simulacion.
+Se suele utilizar \theta = 0.5.
+Notar que si \theta = 0, entonces ningún nodo interno
+es tratado como un sólo cuerpo, y el algoritmo
+degenera la fuerza bruta.
+}
+
+\frame
+{
+\frametitle{Barnes-Hut Tree Code}
+\framesubtitle{Construyendo un árbol}
+
+Construyendo el Árbol Barnes-Hut
+
+Para construir el árbol, inserta los cuerpos uno despues de otro.
+Para insertar un cuerpo b en el arbol con raíz en el nodo x,
+usar los siguientes pasos recursivos:
+
+1. Si el nodo x no contiene un cuerpo, poner el nuevo cuerpo b ahí.
+2. Si el nodo x es un nod interno, actualizar el centro de masa
+   y el total de la masa de x. Recursivamente inserta el cuerpo b
+   en el cuadrante apropiado.
+3. Si el nodo x es un nodo externo, digamos que contiejne un cuerpo
+   llamado c, entonces hay dos cuerpos, b y c en la misma región.
+   Subdivide la región creando cuatro hijos. Entonces, recursivamente
+   inserta ambos cuerpos, b y c, en el cuadrante apropiado. Puesto
+   que b y c todavía pueden terminar en el mismo cuadrantes, podrian
+   haber varias subdivisiones durante una inserción simple.
+   Finalmente, actualizar el centro de masa y la masa total de x.
+
+Como ejemplo, consideramos los siguientes 5 cuerpos en el diagrama
+a continuación. En nuestros ejemplos, usamos la convención que las
+ramas, desde izquierda a derecha, representan los cuadrantes
+NO, NE, SO y SE, respectivamente.
+El arbol va a traves de las siguientes etapas a medida que los
+cuerpos son insertados.
+
+Ejemplo con diagramas.
+
+El nodo raíz contiene el centro de masa y el total 
+de masa de los 5 cuerpos. Los otros dos nodos internos
+contienen entre ellos el centro de masa y la masa total
+de los cuerpos b,c y d.
+}
+
+\frame
+{
+\frametitle{Barnes-Hut Tree Code}
+\framesubtitle{Cálculo de la fuerza sobre un cuerpo}
+
+Calculando la fuerza que actua sobre un cuerpo.
+
+Para calcular la fuerza que ejerce la red sobre un cuerpo b,
+usar el siguiente procedimiento recursivo, comenzando con
+la raiz del quad-tree:
+
+1. Si el nodo actual es un nodo externo (y no es el cuerpo b),
+   calcular la fuerza ejercida por el nodo actual sobre b,
+   y agregar esta cantidad a la fuerza de la red sobre b.
+2. De otro modo, calcular el ratio s/d. Si s/d < \theta,
+   tratar este nodo interno como un unico cuerpo, y calcular
+   la fuerza que ejerce sobre el cuerpo b, y agrega esta fuerza
+   a la cantidad de fuerza de la red sobre b.
+3. De otro modo, correr el procedimiento recursivamente en cada
+   uno de los actuales nodos hijos.
+
+Como ejemplo, para calcular la fuerza de la red sobre el cuerpo a
+comenzaremos en la raiz, la cual es un nodo interno.
+Esta representa el centro de masa de los 6 cuerpos
+a, b, c, d, e y f, los cuales tienen masas 1, 2, 3, 4, 5 y 6 Kg,
+respectivamente.
+
+El calculo de fuerza procede de esta forma:
+
+1. El primer nodo examinado es la raiz. Comparando el cuerpo A
+   a el nodo centro de masa (punto blanco), el cuociente
+   s/d = 100/43.1 > \theta = 0.5, por lo que realizamos el proceso
+   recursivo en cada hijo de la raiz.
+
+2. El primer hijo es el cuerpo A, por lo que no ejerce fuerza sobre
+   si mismo, no hacemos nada.
+
+3. Este hijo representa el cuadrante NE del espacio, y contiene
+   el centro de masa de los cuerpos b, c, d y e.
+   Ahora s/d = 50/62.7 > \theta por lo que recursivamente
+   calculamos la fuerza ejercida por el primer nodo hijo no vacio.
+
+4. Este es tambien un nodo interno, representando el cuadrante
+   NE del padre, y conteniendo el centro de masa de los cuerpos
+   b, c y d.
+   Ahora s/d = 25/66.9 < \theta.
+   Tratando el nodo interno como un solo cuerpo, cuya masa
+   es la suma de las masas de b, c y d, calculamos la fuerza
+   ejercida sobre el cuerpo a, y se agrega al valor
+   de la fuerza ejercida de la red sobre a.
+   Dado que el padre de este nodo no posee mas hijos,
+   continuamos examinando los otros hijos de la raiz.
+
+5. El siguiente hijo es el que contiene el cuerpo e.
+   Este es un nodo externo, por lo que calculamos la fuerza
+   entre los cuerpos a y e, y los agregamos a la fuerza
+   ejercida de la red sobre a.
+
+6- Habiendo examinado todos los hermanos en este nivel,
+   nos movemos al siguiente hijo del padre, lo que nos lleva
+   al nodo que contiene el cuerpo f.
+   Debido a que es un nodo externo calculamos la fuerza
+   y la agregamos a la fuerza ejercida de la red sobre a.
+}
+
+
+%Tree Codes are gridless, have no preferred geometry and can incorporate
+%either vacuum or periodic boundary conditions.
+%In addition, they waste no time simulating regions devoid of matter.
+%Hence, Tree Codes are particularly effective for modeling collisions
+%between galaxies.
+%
+%Forces on all particles are obtained with O(N log N) operations.
+%The down side is that tree codes require a large amount of auxillary storage.
+%
+%Note: The standard Barnes Tree Code is not as accurate, however,
+%as the Fast Multipole Method (FMM), to be discussed later.
+%The Barnes-Hut type algorithms are essentially dumb FMM algorithms with
+%order-0 multipole expansions.
+%FMM would only be slower than the Barnes Hut if you want more accuracy
+%(but for a given accuracy, FMM is likely faster).
+%
+%McMillan and Aarseth (1993) remedy the limited accuracy shortcoming by
+%using a higher order integration scheme, along with block time steps and
+%multipole expansions.
+%The tree is not reconstructed at every step, but is instead predicted along
+%with the particles with indifidual nodes rebuilt as needed.
