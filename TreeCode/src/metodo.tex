@@ -43,8 +43,8 @@ masas $m_{1}$, $m_{2}$, la masa total del centro de masa $(x,y)$ está dada por:
 \begin{itemize}
 	\item Esquema inteligente para \blue{agrupar} cuerpos suficientemente cerca.
 	\item Recursivamente \blue{divide} el conjunto de cuerpos en grupos
-		guardandolos en un ``quad-tree''.
-	\item Cada \blue{nodo} representa una region en un espacio de dos dimensiones.
+		guardándolos en un ``quad-tree''.
+	\item Cada \blue{nodo} representa una región en un espacio de dos dimensiones.
 	\item El nodo \blue{más alto} representa todo el espacio,
 		y sus cuatro \blue{hijos} representan cuatro cuadrantes en el espacio,
 \end{itemize}
@@ -158,7 +158,7 @@ masas $m_{1}$, $m_{2}$, la masa total del centro de masa $(x,y)$ está dada por:
 \begin{itemize}
 	\item En un \blue{cuerpo} particular.
 	 \begin{itemize}
-	 	\item Recorrer los nodos del arbol, partiendo de la raíz.
+	 	\item Recorrer los nodos del árbol, partiendo de la raíz.
 	 \end{itemize}
 	\item Centro de masa de un \blue{nodo interno}:
 	\begin{itemize}
@@ -182,12 +182,12 @@ masas $m_{1}$, $m_{2}$, la masa total del centro de masa $(x,y)$ está dada por:
 \begin{itemize}
 	\item ¿Cómo determinarlo?
 	\begin{itemize}
-		\item $ Cuociente\ =\ \frac{\text{ancho región nodo }(s)}{\text{distancia Cuerpo-CM }(d)}$
+		\item $ Cociente\ =\ \frac{\text{ancho región nodo }(s)}{\text{distancia Cuerpo-CM }(d)}$
 	\end{itemize}
-	\item Despues, comparar con un valor umbral $\theta$.
+	\item Después, comparar con un valor umbral $\theta$.
 	\begin{itemize}
 		\item Si \blue{$\frac{s}{d} < \theta$}, entonces el nodo interno esta lo suficiente \blue{lejos}.
-		\item Ajustando \blue{$\theta$}, podemos cambiar la \green{velocidad} y la \green{presición} de la simulacion.
+		\item Ajustando \blue{$\theta$}, podemos cambiar la \green{velocidad} y la \green{precisión} de la simulación.
 		\item Se suele utilizar \blue{$\theta = 0.5$}. Si \red{$\theta = 0$}, degenera (fuerza bruta).
 	\end{itemize}
 \end{itemize}
@@ -594,7 +594,7 @@ comenzando con la raiz:
 \begin{enumerate}
 	\item<1-> \red{Si} el \green{nodo actual} es un \blue{nodo externo} (y no b).\\ Calcular y agregar fuerza.
 	\item<2-> \red{Si no}, calcular $\frac{s}{d}$. Si $\frac{s}{d} < \theta$,
-			nodo interno como un unico cuerpo.\\Calcular y agregar fuerza.
+			nodo interno como un único cuerpo.\\Calcular y agregar fuerza.
 	\item<3-> \red{Si no}, recursividad del procedimiento en cada \blue{hijo del nodo actual}.
 \end{enumerate}
 }
@@ -606,7 +606,7 @@ comenzando con la raiz:
 
 \begin{itemize}
 	\item Ejemplo, calcular la fuerza de la red sobre el \blue{cuerpo a}.
-	\item Comenzaremos en la \red{raiz} (nodo interno).
+	\item Comenzaremos en la \red{raíz} (nodo interno).
 	\begin{itemize}
 		\item Representa CM de los 6 cuerpos.
 		 \begin{itemize}
@@ -614,7 +614,7 @@ comenzando con la raiz:
 		 \end{itemize}
 	\end{itemize}
 \end{itemize}
-El calculo de fuerza procede de la sisguiente forma.
+El calculo de fuerza procede de la siguiente forma.
 }
 
 \frame
@@ -622,9 +622,9 @@ El calculo de fuerza procede de la sisguiente forma.
 \frametitle{Barnes-Hut Tree Code}
 \framesubtitle{Cálculo de la fuerza sobre un cuerpo}
 
-\red{1.} El primer nodo examinado es la raiz.
+\red{1.} El primer nodo examinado es la raíz.
 \begin{itemize}
-	\item Cuociente entre A y CM. $\frac{s}{d} = \frac{100}{43.1} > \theta = 0.5$
+	\item Cociente entre A y CM. $\frac{s}{d} = \frac{100}{43.1} > \theta = 0.5$
 	\item $\rightarrow$ Proceso recursivo dentro.
 \end{itemize}
 
