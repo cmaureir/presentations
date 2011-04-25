@@ -15,3 +15,4 @@ clean:
 distclean: clean
 	@ echo "borrando PDF..."
 	@rubber --clean --pdf $(SRC)
+	@rm -rf bin/
