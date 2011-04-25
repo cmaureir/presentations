@@ -1,7 +1,7 @@
 \frame
 {
 \frametitle{Barnes-Hut Tree Code}
-\framesubtitle{Idea}
+\framesubtitle{\oran{Idea}}
 
 \begin{center}
 ``Agrupar cuerpos cercanos y aproximarlos en un solo cuerpo''
@@ -18,7 +18,7 @@
 \frame
 {
 \frametitle{Barnes-Hut Tree Code}
-\framesubtitle{Idea}
+\framesubtitle{\oran{Idea}}
 
 \green{Centro de Masa}
 
@@ -38,7 +38,7 @@ masas $m_{1}$, $m_{2}$, la masa total del centro de masa $(x,y)$ está dada por:
 \frame
 {
 \frametitle{Barnes-Hut Tree Code}
-\framesubtitle{Algoritmo}
+\framesubtitle{\oran{Algoritmo}}
 
 \begin{itemize}
 	\item Esquema inteligente para \blue{agrupar} cuerpos suficientemente cerca.
@@ -53,7 +53,7 @@ masas $m_{1}$, $m_{2}$, la masa total del centro de masa $(x,y)$ está dada por:
 \frame
 {
 \frametitle{Barnes-Hut Tree Code}
-\framesubtitle{Aproximación}
+\framesubtitle{\oran{Aproximación}}
 \def\layersep{2.5cm}
 \begin{center}
 \begin{tikzpicture}[scale=0.6]
@@ -96,7 +96,7 @@ masas $m_{1}$, $m_{2}$, la masa total del centro de masa $(x,y)$ está dada por:
 \frame
 {
 \frametitle{Barnes-Hut Tree Code}
-\framesubtitle{Aproximación}
+\framesubtitle{\oran{Aproximación}}
 \begin{itemize}
 	\item Cada nodo \blue{externo}, representa un \red{único} cuerpo.
 	\item Cada nodo \blue{interno}, representa el \red{grupo} de cuerpos debajo de ella,
@@ -108,7 +108,7 @@ masas $m_{1}$, $m_{2}$, la masa total del centro de masa $(x,y)$ está dada por:
 \frame
 {
 \frametitle{Barnes-Hut Tree Code}
-\framesubtitle{Aproximación}
+\framesubtitle{\oran{Aproximación}}
 
 \begin{tikzpicture}[level 1/.style={sibling distance=10em},
                     level 2/.style={sibling distance=2.5em},
@@ -153,7 +153,7 @@ masas $m_{1}$, $m_{2}$, la masa total del centro de masa $(x,y)$ está dada por:
 \frame
 {
 \frametitle{Barnes-Hut Tree Code}
-\framesubtitle{Cálculo de la fuerza}
+\framesubtitle{\oran{Cálculo de la fuerza}}
 
 \begin{itemize}
 	\item En un \blue{cuerpo} particular.
@@ -177,7 +177,7 @@ masas $m_{1}$, $m_{2}$, la masa total del centro de masa $(x,y)$ está dada por:
 \frame
 {
 \frametitle{Barnes-Hut Tree Code}
-\framesubtitle{Cálculo de la fuerza}
+\framesubtitle{\oran{Cálculo de la fuerza}}
 
 \begin{itemize}
 	\item ¿Cómo determinarlo?
@@ -196,7 +196,7 @@ masas $m_{1}$, $m_{2}$, la masa total del centro de masa $(x,y)$ está dada por:
 \frame
 {
 \frametitle{Barnes-Hut Tree Code}
-\framesubtitle{Construyendo un árbol}
+\framesubtitle{\oran{Construyendo un árbol}}
 
 Si queremos ingresar el \blue{cuerpo b} en el árbol con raíz en el \red{nodo x}.
 
@@ -220,7 +220,7 @@ Si queremos ingresar el \blue{cuerpo b} en el árbol con raíz en el \red{nodo x
 \frame
 {
 \frametitle{Barnes-Hut Tree Code}
-\framesubtitle{Construyendo un árbol}
+\framesubtitle{\oran{Construyendo un árbol}}
 
 \begin{itemize}
 	\item Ejemplo, 5 cuerpos.
@@ -270,7 +270,7 @@ Si queremos ingresar el \blue{cuerpo b} en el árbol con raíz en el \red{nodo x
 \frame
 {
 \frametitle{Barnes-Hut Tree Code}
-\framesubtitle{Construyendo un árbol}
+\framesubtitle{\oran{Construyendo un árbol}}
 
 \begin{itemize}
     \item Agregar cuerpo A.
@@ -326,7 +326,7 @@ Si queremos ingresar el \blue{cuerpo b} en el árbol con raíz en el \red{nodo x
 \frame
 {
 \frametitle{Barnes-Hut Tree Code}
-\framesubtitle{Construyendo un árbol}
+\framesubtitle{\oran{Construyendo un árbol}}
 
 \begin{itemize}
     \item Agregar cuerpo B.
@@ -383,7 +383,7 @@ Si queremos ingresar el \blue{cuerpo b} en el árbol con raíz en el \red{nodo x
 \frame
 {
 \frametitle{Barnes-Hut Tree Code}
-\framesubtitle{Construyendo un árbol}
+\framesubtitle{\oran{Construyendo un árbol}}
 
 \begin{itemize}
     \item Agregar cuerpo C.
@@ -450,7 +450,7 @@ Si queremos ingresar el \blue{cuerpo b} en el árbol con raíz en el \red{nodo x
 \frame
 {
 \frametitle{Barnes-Hut Tree Code}
-\framesubtitle{Construyendo un árbol}
+\framesubtitle{\oran{Construyendo un árbol}}
 
 \begin{itemize}
     \item Agregar cuerpo D.
@@ -518,7 +518,7 @@ Si queremos ingresar el \blue{cuerpo b} en el árbol con raíz en el \red{nodo x
 \frame
 {
 \frametitle{Barnes-Hut Tree Code}
-\framesubtitle{Construyendo un árbol}
+\framesubtitle{\oran{Construyendo un árbol}}
 
 \begin{itemize}
 	\item Agregar cuerpo E.
@@ -586,7 +586,7 @@ Si queremos ingresar el \blue{cuerpo b} en el árbol con raíz en el \red{nodo x
 \frame
 {
 \frametitle{Barnes-Hut Tree Code}
-\framesubtitle{Cálculo de la fuerza sobre un cuerpo}
+\framesubtitle{\oran{Cálculo de la fuerza sobre un cuerpo}}
 
 Calcular la fuerza que ejerce \red{la red} sobre un \blue{cuerpo b},
 comenzando con la raiz:
@@ -602,7 +602,7 @@ comenzando con la raiz:
 \frame
 {
 \frametitle{Barnes-Hut Tree Code}
-\framesubtitle{Cálculo de la fuerza sobre un cuerpo}
+\framesubtitle{\oran{Cálculo de la fuerza sobre un cuerpo}}
 
 \begin{itemize}
 	\item Ejemplo, calcular la fuerza de la red sobre el \blue{cuerpo a}.
@@ -620,7 +620,7 @@ El calculo de fuerza procede de la siguiente forma.
 \frame
 {
 \frametitle{Barnes-Hut Tree Code}
-\framesubtitle{Cálculo de la fuerza sobre un cuerpo}
+\framesubtitle{\oran{Cálculo de la fuerza sobre un cuerpo}}
 
 \red{1.} El primer nodo examinado es la raíz.
 \begin{itemize}
@@ -697,7 +697,7 @@ El calculo de fuerza procede de la siguiente forma.
 \frame
 {
 \frametitle{Barnes-Hut Tree Code}
-\framesubtitle{Cálculo de la fuerza sobre un cuerpo}
+\framesubtitle{\oran{Cálculo de la fuerza sobre un cuerpo}}
 
 \red{2.} El primer hijo es el cuerpo A
 \begin{itemize}
@@ -762,7 +762,7 @@ El calculo de fuerza procede de la siguiente forma.
 \frame
 {
 \frametitle{Barnes-Hut Tree Code}
-\framesubtitle{Cálculo de la fuerza sobre un cuerpo}
+\framesubtitle{\oran{Cálculo de la fuerza sobre un cuerpo}}
 
 \red{3.} Hijo representante NE (contiene b, c, d y e).
 \begin{itemize}
@@ -834,7 +834,7 @@ El calculo de fuerza procede de la siguiente forma.
 \frame
 {
 \frametitle{Barnes-Hut Tree Code}
-\framesubtitle{Cálculo de la fuerza sobre un cuerpo}
+\framesubtitle{\oran{Cálculo de la fuerza sobre un cuerpo}}
 
 \red{4.} Hijo representante NE del padre (contiene b, c y d).
 \begin{itemize}
@@ -907,7 +907,7 @@ El calculo de fuerza procede de la siguiente forma.
 \frame
 {
 \frametitle{Barnes-Hut Tree Code}
-\framesubtitle{Cálculo de la fuerza sobre un cuerpo}
+\framesubtitle{\oran{Cálculo de la fuerza sobre un cuerpo}}
 
 \red{5.} El siguiente hijo es el que contiene el cuerpo e.
 \begin{itemize}
@@ -973,7 +973,7 @@ El calculo de fuerza procede de la siguiente forma.
 \frame
 {
 \frametitle{Barnes-Hut Tree Code}
-\framesubtitle{Cálculo de la fuerza sobre un cuerpo}
+\framesubtitle{\oran{Cálculo de la fuerza sobre un cuerpo}}
 
 \red{6.} Volvemos al nivel anterior, para ver otro hijo.
 \begin{itemize}
@@ -1040,7 +1040,7 @@ El calculo de fuerza procede de la siguiente forma.
 \frame
 {
 \frametitle{Barnes-Hut Tree Code}
-\framesubtitle{Cálculo de la fuerza sobre un cuerpo}
+\framesubtitle{\oran{Cálculo de la fuerza sobre un cuerpo}}
 \red{7.} Finalmente, en cada paso vamos sumando las fuerzas calculadas,
 para obtener la fuerza total de la red sobre el \blue{cuerpo a}.
 }
