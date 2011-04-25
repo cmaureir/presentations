@@ -8,9 +8,9 @@
 \end{center}
 
 \begin{itemize}
-	\item Si el grupo está \blue{muy lejos}, se aproximan los efectos gravitacionales
+	\item<2-> Si el grupo está \blue{muy lejos}, se aproximan los efectos gravitacionales
 		 utilizando el centro de masa.
-	\item \green{Centro de masa}, promedio de las posiciones de un cuerpo en un grupo,
+	\item<3-> \green{Centro de masa}, promedio de las posiciones de un cuerpo en un grupo,
 		 ponderado por la masa.
 \end{itemize}
 }
@@ -41,11 +41,11 @@ masas $m_{1}$, $m_{2}$, la masa total del centro de masa $(x,y)$ está dada por:
 \framesubtitle{\oran{Algoritmo}}
 
 \begin{itemize}
-	\item Esquema inteligente para \blue{agrupar} cuerpos suficientemente cerca.
-	\item Recursivamente \blue{divide} el conjunto de cuerpos en grupos
-		guardándolos en un ``quad-tree''.
-	\item Cada \blue{nodo} representa una región en un espacio de dos dimensiones.
-	\item El nodo \blue{más alto} representa todo el espacio,
+	\item<1-> Esquema inteligente para \blue{agrupar} cuerpos suficientemente cerca.
+	\item<2-> Recursivamente \blue{divide} el conjunto de cuerpos en grupos
+	          guardándolos en un ``quad-tree''.
+	\item<3-> Cada \blue{nodo} representa una región en un espacio de dos dimensiones.
+	\item<4-> El nodo \blue{más alto} representa todo el espacio,
 		y sus cuatro \blue{hijos} representan cuatro cuadrantes en el espacio,
 \end{itemize}
 }
@@ -98,8 +98,8 @@ masas $m_{1}$, $m_{2}$, la masa total del centro de masa $(x,y)$ está dada por:
 \frametitle{Barnes-Hut Tree Code}
 \framesubtitle{\oran{Aproximación}}
 \begin{itemize}
-	\item Cada nodo \blue{externo}, representa un \red{único} cuerpo.
-	\item Cada nodo \blue{interno}, representa el \red{grupo} de cuerpos debajo de ella,
+	\item<1-> Cada nodo \blue{externo}, representa un \red{único} cuerpo.
+	\item<2-> Cada nodo \blue{interno}, representa el \red{grupo} de cuerpos debajo de ella,
 			(guarda ``centro de masa'' y ``masa total'').
 \end{itemize}
 }
