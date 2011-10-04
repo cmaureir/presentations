@@ -8,7 +8,7 @@
                 \begin{tikzpicture}
                     \draw (-1,-0.5) circle (1pt) node[above] {$x_{i}$};
                     \draw (1,0.5)   circle (1pt) node[above] {$x_{j}$};
-                    \draw [<-] (-1,-0.5) -- (1,0.5) node[below=0.5cm] {$x = x_{i} - x_{j}$};
+                    \draw [<-] (-1,-0.5) -- (1,0.5) node[below=0.5cm] {$\vec{\mathbf{x}} = x_{i} - x_{j}$};
                 \end{tikzpicture}
             \end{center}
         \end{column}
@@ -17,7 +17,8 @@
             \begin{eqnarray}
                 \Phi_{i} &=& \sum_{j=0}^{N} \frac{m_{j}}{r} \\
                 r &=& \sqrt{(x_{i}-x_{j})^2 + (y_{i}-y_{j})^2 + (z_{i}-z_{j})^2} \\
-                  &=& \sqrt{x^{2} + y^{2} + z^{2}} \nonumber
+                  &=& \sqrt{x^{2} + y^{2} + z^{2}} \nonumber \\
+                  &=& |\vec{\mathbf{x}}| \nonumber
             \end{eqnarray}
         \end{column}
     \end{columns}
@@ -38,9 +39,9 @@
                   (0.1,-0.6) circle (1pt)
                   (0.3,0.2) circle (1pt)
                   (0.6,0.6) circle (1pt);
-            \draw [<-] (-5,-1) -- node[above=0.2cm] {$x = x_{i} - x_{j}$} (-0.6,0.7) node[above=0.1cm] {$x_{j}$};
-            \draw [<-] (-5,-1) node[above] {$x_{i}$} -- node[below=0.2cm] {$X = x_{i} - x_{c}$} (0,0) node[below] {$x_{c}$};
-            \draw [<-] (0,0)   -- node[right=1.2cm] {$x - X = x_{c} - x_{j}$} (-0.6,0.7);
+            \draw [<-] (-5,-1) -- node[above=0.2cm] {$\vec{\mathbf{x}} = x_{i} - x_{j}$} (-0.6,0.7) node[above=0.1cm] {$x_{j}$};
+            \draw [<-] (-5,-1) node[above] {$x_{i}$} -- node[below=0.2cm] {$\vec{\mathbf{X}} = x_{i} - x_{c}$} (0,0) node[below] {$x_{c}$};
+            \draw [<-] (0,0)   -- node[right=1.2cm] {$\vec{\mathbf{x}} - \vec{\mathbf{X}} = x_{c} - x_{j}$} (-0.6,0.7);
         \end{tikzpicture}
     \end{center}
 
@@ -53,8 +54,19 @@
     \frametitle{Método}
     \framesubtitle{Expansión de Taylor}
 
-    $$f(x) = f(a) + \frac{f'(a)}{1!} (x-a)+\frac{f''(a)}{2!} (x-a)^{2} + \cdots$$
-    $$f(x) = \sum_{n=0}^{\infty} \frac{f^{(n)}(a)}{n!} (x-a)^{n}$$
+    \begin{itemize}
+        \item Una dimensión:
+            $$f(x) = f(a) + \frac{f'(a)}{1!} (x-a)+\frac{f''(a)}{2!} (x-a)^{2} + \cdots$$
+            $$f(x) = \sum_{n=0}^{\infty} \frac{f^{(n)}(a)}{n!} (x-a)^{n}$$
+        \item Tres dimensiones:
+            $$f(\vec{\mathbf{X}}) = \sum_{n=0}^{\infty} \frac{f^{(n)}(\vec{\mathbf{A}})}{n!} (\vec{\mathbf{X}} - \vec{\mathbf{A}})^{n}$$
+            Con:
+            \begin{itemize}
+                \item $\vec{\mathbf{X}} = (x,y,z)$
+                \item $\vec{\mathbf{A}} = (a,b,c)$
+            \end{itemize}
+    \end{itemize}
+
     
 \end{frame}
 
@@ -62,11 +74,11 @@
     \frametitle{Método}
     \framesubtitle{Expansión de Taylor}
     \tiny
-    $$R = \sqrt{X^{2} + Y^{2} + Z^{2}}$$
 
+    $$f(\vec{\mathbf{x}}) = f(\vec{\mathbf{X}}) + \frac{f'(\vec{\mathbf{X}})}{1!} (\vec{\mathbf{x}}-\vec{\mathbf{X}})+\frac{f''(\vec{\mathbf{X}})}{2!} (\vec{\mathbf{x}}-\vec{\mathbf{X}})^{2} + \cdots$$
     \begin{equation}
     \begin{split}
-    f(x) = \frac{1}{r} = \frac{1}{R} +& \frac{1}{1!} \left[ (x-X)\frac{\partial}{\partial X} \frac{1}{R} + (y-Y)\frac{\partial}{\partial Y} \frac{1}{R} +(z-Z)\frac{\partial}{\partial Z} \frac{1}{R} \right] \\
+    f(\vec{\mathbf{x}}) = \frac{1}{r} = \frac{1}{R} +& \frac{1}{1!} \left[ (x-X)\frac{\partial}{\partial X} \frac{1}{R} + (y-Y)\frac{\partial}{\partial Y} \frac{1}{R} +(z-Z)\frac{\partial}{\partial Z} \frac{1}{R} \right] \\
                                      +& \frac{2}{2!} \left[ (x-X)^{2}\frac{\partial^{2}}{\partial X \partial X} \frac{1}{R} + (y-Y)^{2}\frac{\partial^{2}}{\partial Y\partial Y} \frac{1}{R} +(z-Z)^{2}\frac{\partial^{2}}{\partial Z\partial Z} \frac{1}{R} \right. \nonumber \\
                                      +& \left.(x-X)(y-Y) \frac{\partial^{2}}{\partial X \partial Y} \frac{1}{R} + (y-Y)(z-Z)\frac{\partial^{2}}{\partial Y\partial Z} \frac{1}{R} + (z-Z)(x-X)\frac{\partial^{2}}{\partial Z \partial X} \frac{1}{R} \right]
     \end{split}
@@ -77,11 +89,9 @@
     \frametitle{Método}
     \framesubtitle{Expansión de Taylor}
     \tiny
-    $$R = \sqrt{X^{2} + Y^{2} + Z^{2}}$$
-
     \begin{equation}
     \begin{split}
-    f(x) = \frac{1}{r} = \frac{1}{R} +& \frac{1}{1!} \left[ (x-X)\red{\frac{\partial}{\partial X} \frac{1}{R}} + (y-Y)\red{\frac{\partial}{\partial Y} \frac{1}{R}} +(z-Z)\red{\frac{\partial}{\partial Z} \frac{1}{R}} \right] \\
+    f(\vec{\mathbf{x}}) = \frac{1}{r} = \frac{1}{R} +& \frac{1}{1!} \left[ (x-X)\red{\frac{\partial}{\partial X} \frac{1}{R}} + (y-Y)\red{\frac{\partial}{\partial Y} \frac{1}{R}} +(z-Z)\red{\frac{\partial}{\partial Z} \frac{1}{R}} \right] \\
                                      +& \frac{2}{2!} \left[ (x-X)^{2}\red{\frac{\partial^{2}}{\partial X \partial X} \frac{1}{R}} + (y-Y)^{2}\red{\frac{\partial^{2}}{\partial Y\partial Y} \frac{1}{R}} +(z-Z)^{2}\red{\frac{\partial^{2}}{\partial Z\partial Z} \frac{1}{R}} \right. \nonumber \\
                                      +& \left.(x-X)(y-Y) \red{\frac{\partial^{2}}{\partial X \partial Y} \frac{1}{R}} + (y-Y)(z-Z)\red{\frac{\partial^{2}}{\partial Y\partial Z} \frac{1}{R}} + (z-Z)(x-X)\red{\frac{\partial^{2}}{\partial Z \partial X} \frac{1}{R}} \right]
     \end{split}
@@ -110,17 +120,17 @@
     \frametitle{Método}
     \framesubtitle{Forma generalizada Expansión de Taylor}
     \footnotesize
-    $$\frac{1}{r} = \sum_{n=0}^{p} \frac{1}{n!} (x-X)^{n}\frac{\partial^{(n)}}{\partial X} \frac{1}{R}$$
+    $$\frac{1}{r} = \sum_{n=0}^{p} \frac{1}{n!} (\vec{\mathbf{x}}-\vec{\mathbf{X}})^{n}\frac{\partial^{(n)}}{\partial \vec{\mathbf{X}}} \frac{1}{R}$$
     \begin{itemize}
-        \item $X = x_{i} - x_{c}$, independiente de $j$.
-        \item $x - X = x_{c} - x_{j}$, independiente de $i$. 
+        \item $\vec{\mathbf{X}} = x_{i} - x_{c}$, independiente de $j$.
+        \item $\vec{\mathbf{x}} - \vec{\mathbf{X}} = x_{c} - x_{j}$, independiente de $i$. 
     \end{itemize}
     \tiny
     \begin{eqnarray}
         \Phi_{i} &=& \sum_{j=0}^{N} \frac{m_{j}}{r} \nonumber \\
-                 &=& \sum_{j=0}^{N} m_{j}\sum_{n=0}^{p} \frac{1}{n!}(x-X)^{n}\frac{\partial^{(n)}}{\partial X} \frac{1}{R} \nonumber \\
-                 &=& \sum_{n=0}^{p} \sum_{j=0}^{N} m_{j}\frac{1}{n!}(x-X)^{n}\frac{\partial^{(n)}}{\partial X} \frac{1}{R} \nonumber \\
-                 &=& \sum_{n=0}^{p} \frac{\partial^{(n)}}{\partial X} \frac{1}{R} \underbrace{\sum_{j=0}^{N} m_{j}\frac{1}{n!}(x-X)^{n}}_{\mbox{multipole}} \nonumber \\
+                 &=& \sum_{j=0}^{N} m_{j}\sum_{n=0}^{p} \frac{1}{n!}(\vec{\mathbf{x}}-\vec{\mathbf{X}})^{n}\frac{\partial^{(n)}}{\partial \vec{\mathbf{X}}} \frac{1}{R} \nonumber \\
+                 &=& \sum_{n=0}^{p} \sum_{j=0}^{N} m_{j}\frac{1}{n!}(\vec{\mathbf{x}}-\vec{\mathbf{X}})^{n}\frac{\partial^{(n)}}{\partial \vec{\mathbf{X}}} \frac{1}{R} \nonumber \\
+                 &=& \sum_{n=0}^{p} \frac{\partial^{(n)}}{\partial \vec{\mathbf{X}}} \frac{1}{R} \underbrace{\sum_{j=0}^{N} m_{j}\frac{1}{n!}(\vec{\mathbf{x}}-\vec{\mathbf{X}})^{n}}_{\mbox{multipole}} \nonumber \\
     \end{eqnarray}
 \end{frame}
 
@@ -128,10 +138,10 @@
     \frametitle{Método}
     \framesubtitle{Forma generalizada Expansión de Taylor}
 
-    $$\Phi_{i} = \sum_{n=0}^{p} \frac{\partial^{(n)}}{\partial X} \frac{1}{R} \sum_{j=0}^{N} m_{j}\frac{1}{n!}(x-X)^{n} $$
+    $$\Phi_{i} = \sum_{n=0}^{p} \frac{\partial^{(n)}}{\partial \vec{\mathbf{X}}} \frac{1}{R} \sum_{j=0}^{N} m_{j}\frac{1}{n!}(\vec{\mathbf{x}}-\vec{\mathbf{X}})^{n} $$
     $$\frac{1}{R^{n+1}}\ \ \ \ \ \ (r-R)^{n}$$
     $$\left(\frac{r-R}{R}\right)^{n} < 1$$
-    $$ |x - X| < |X|$$
+    $$ |\vec{\mathbf{x}} - \vec{\mathbf{X}}| < |\vec{\mathbf{X}}|$$
     
 \end{frame}
 

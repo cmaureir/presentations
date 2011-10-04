@@ -38,6 +38,7 @@
             \item Toma la idea de una expansión de Taylor.
             \item Es exacta cuando el valor de $r^2$ es grande.
                 $$r^{2} = x^{2} + y^{2} + z^{2}$$
+                  Siendo $r$ la distancia entre dos cuerpos.
         \end{itemize}
     \end{itemize}
 \end{frame}
@@ -49,25 +50,9 @@
     \begin{itemize}
         \item<1-> FFM calcula una expresión para el \blue{potencial} en todos los puntos, no la \blue{fuerza} como lo hace el TC.
         \item<2-> FFM usa \blue{más información} que sólo la masa y el centro de las partículas en una caja.
-                  Esta expansión mas complicada es más precisa, pero también más cara si se usan expansiones de mayor orden.
-        \item<3-> La decisión de usar la masa y el centro de masa de una caja de longitud $n$ en un punto distante,
-                  o si $n$ debe ser descompuesto en sus hijos, depende sólo de la \blue{posición y tamaño de la caja},
+        \item<2-> Esta expansión compleja es \blue{más precisa}, pero también \red{más cara} si se usan expansiones de mayor orden.
+        \item<3-> Decidir si ocupamos la masa y el centro de masa de una caja de lado $n$ en un punto distante,
+                  o si tenemos que descomponerla, depende sólo de la \blue{ubicación y tamaño de la caja},
                   \textbf{no} de la \blue{ubicación del centro de masa} de la caja.
     \end{itemize}
 \end{frame}
-
-
-\begin{frame}
-    \frametitle{Introducción}
-    \framesubtitle{¿Cuándo conviene y cuándo no conviene usarlo?}
-
-    \begin{itemize}
-        \item<1-> Este algoritmo no es adecuado para estudios de sistemas de colisiones: (McMillan y S. J. Aarseth (1993))
-        \begin{itemize}
-            \item Es lento comparado con otros métodos.
-            \item Deriva su tiempo de CPU de orden O(1) por cada evaluación de la fuerza, para determinar las fuerzas en un número arbitrario de partículas en tiempo casi constante.
-        \end{itemize}
-        \item<2-> El algoritmo es muy adecuado para aplicaciones en las que todas las partículas tienen los intervalos de tiempo iguales o similares.
-    \end{itemize}
-\end{frame}
-
