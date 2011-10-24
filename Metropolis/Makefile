@@ -1,0 +1,18 @@
+SRC=metropolis
+
+all:
+	@rubber --pdf $(SRC)
+	@if [[ ! -d bin ]];then mkdir bin;fi
+	@mv $(SRC).pdf bin/
+
+x:
+	okular bin/$(SRC).pdf &> /dev/null &
+
+clean:
+	@echo "limpiando..."
+	@rubber --clean $(SRC)
+
+distclean: clean
+	@ echo "borrando PDF..."
+	@rubber --clean --pdf $(SRC)
+	@rm -rf bin/
